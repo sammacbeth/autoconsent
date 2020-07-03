@@ -27,27 +27,6 @@ export default [{
     typescript(),
   ]
 }, {
-  input: './test/background.js',
-  output: [{
-    file: './test/background.bundle.js',
-    format: 'iife',
-  }],
-  plugins: [
-    typescript(),
-    nodeResolve(),
-    commonjs(),
-    json(),
-  ],
-}, {
-  input: './test/content.js',
-  output: [{
-    file: './test/content.bundle.js',
-    format: 'iife',
-  }],
-  plugins: [
-    typescript(),
-  ]
-}, {
   input: './addon/background.ts',
   output: [{
     file: './addon/background.bundle.js',
