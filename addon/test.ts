@@ -111,7 +111,7 @@ describe("CMP Tests", () => {
       "https://www.abcbourse.com/",
       "https://www.journaldugeek.com/",
     ].forEach((url) => {
-      cmpTest("Sirdata", url);
+      cmpTest("Sirdata", url, { selfTest: false });
     });
   });
 
