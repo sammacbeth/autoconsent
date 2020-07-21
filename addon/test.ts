@@ -117,7 +117,7 @@ describe("CMP Tests", () => {
 
   describe("w18lara", () => {
     ["https://www.xxxlutz.de/"].forEach((url) => {
-      cmpTest("w18lara", url);
+      cmpTest("w18lara", url, { selfTest: false });
     });
   });
 
