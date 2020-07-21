@@ -14,7 +14,8 @@
     "fetch-fanboy-list": "wget https://www.fanboy.co.nz/fanboy-cookiemonster.txt",
     "fetch-site-list": "curl https://s3.amazonaws.com/cdn.cliqz.com/re-consent/supported_sites.txt > sites.txt",
     "build-rules": "node rules/build.js && cp rules/rules.json addon/",
-    "version": "node update_version.js && git add addon/manifest.json"
+    "version": "node update_version.js && git add addon/manifest.json",
+    "vendor-copy": "mkdir -p addon/vendor && cp node_modules/mocha/mocha.* addon/vendor/ && cp node_modules/chai/chai.js addon/vendor/"
   },
   "author": "Sam Macbeth",
   "license": "MPL-2.0",
@@ -22,10 +23,14 @@
   "devDependencies": {
     "@babel/preset-typescript": "^7.10.4",
     "@rollup/plugin-typescript": "^4.0.0",
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^8.0.0",
     "bulma": "^0.7.4",
+    "chai": "^4.2.0",
     "ejs": "^2.6.1",
     "jest": "^26.1.0",
     "jest-puppeteer": "^4.4.0",
+    "mocha": "^8.0.1",
     "puppeteer": "^5.0.0",
     "puppeteer-cluster": "^0.15.2",
     "puppeteer-firefox": "^0.5.1",

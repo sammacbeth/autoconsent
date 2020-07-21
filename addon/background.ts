@@ -73,3 +73,5 @@ browser.tabs.onUpdated.addListener(async (tabId, changeInfo, tabInfo) => {
     }
   }
 });
+
+(<any> window).autoconsent = consent;

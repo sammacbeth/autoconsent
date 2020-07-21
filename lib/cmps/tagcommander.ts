@@ -27,7 +27,7 @@ export default class TagCommander extends AutoConsentBase {
   }
 
   async openFrame(tab: TabActor) {
-    if (await tab.elementExists('#footer_tc_privacy') || 
+    if (await tab.elementExists('#footer_tc_privacy') ||
       await tab.elementExists('#footer_tc_privacy_privacy_center') ||
       await tab.elementExists('#header_tc_privacy')) {
       await this.openCmp(tab);
@@ -76,6 +76,6 @@ export default class TagCommander extends AutoConsentBase {
   }
 
   async test(tab: TabActor) {
-    return tab.eval('tC.privacy.categories[0] === "-1"')
+    return tab.eval('tC.privacy.categories[0] === "-1" || tC.privacy.categories.length === 0')
   }
 }

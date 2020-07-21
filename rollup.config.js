@@ -41,4 +41,14 @@ export default [{
   plugins: [
     typescript(),
   ]
-}];
+},  {
+  input: './addon/test.ts',
+  output: [{
+    file: './addon/test.bundle.js',
+    format: 'iife',
+    external: ['chai', 'mocha']
+  }],
+  plugins: [
+    typescript(),
+  ]
+},];
