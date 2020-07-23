@@ -127,15 +127,9 @@ describe("CMP Tests", () => {
     });
   });
 
-  describe("termly", () => {
+  describe("Termly", () => {
     ["https://termly.io/en/"].forEach((url) => {
-      cmpTest("termly", url);
-    });
-  });
-
-  describe("Civic", () => {
-    ["https://www.birdguides.com/"].forEach((url) => {
-      cmpTest("Civic", url);
+      cmpTest("Termly", url, { selfTest: false });
     });
   });
 
