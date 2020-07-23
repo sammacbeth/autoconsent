@@ -4,7 +4,7 @@ import AutoConsent, { waitFor } from "../lib/web";
 import { expect } from "chai";
 
 mocha.setup("bdd");
-mocha.timeout(10000);
+mocha.timeout(12000);
 
 describe("CMP Tests", () => {
   let autoconsent: AutoConsent;
@@ -194,12 +194,13 @@ describe("CMP Tests", () => {
       "https://www.techradar.com/",
       "https://www.livescience.com",
       "https://www.gamesradar.com",
+      "http://www.allocine.fr/",
     ].forEach((url) => {
       cmpTest(cmp, url);
     });
   });
 
-  xdescribe("com_quantcast2", () => {
+  describe("com_quantcast2", () => {
     const cmp = "com_quantcast2";
     ["https://www.fandom.com/"].forEach((url) => {
       cmpTest(cmp, url);
@@ -217,17 +218,19 @@ describe("CMP Tests", () => {
       "https://www.thetradedesk.com/",
       "https://www.planet.fr/",
       "https://www.abc.es/",
+      "https://www.goldens.fr/",
     ].forEach((url) => {
       cmpTest(cmp, url);
     });
   });
 
-  xdescribe("com_optanon", () => {
+  describe("com_optanon", () => {
     const cmp = "com_optanon";
     [
       "https://www.atlassian.com/",
       "https://bitbucket.org/",
       "https://worldofwarcraft.com/",
+      "https://genius.com/",
     ].forEach((url) => {
       cmpTest(cmp, url);
     });
@@ -266,6 +269,32 @@ describe("CMP Tests", () => {
   describe("com_tealium.com", () => {
     ["https://www.constantcontact.com/"].forEach((url) => {
       cmpTest("com_tealium.com", url);
+    });
+  });
+
+  describe("com_chandago", () => {
+    ["https://www.lefigaro.fr/"].forEach((url) => {
+      cmpTest("com_chandago", url);
+    });
+  });
+
+  describe("com_SFR", () => {
+    ["https://www.sfr.fr/"].forEach((url) => {
+      cmpTest("com_SFR", url);
+    });
+  });
+
+  describe("com_springer", () => {
+    ["https://www.ofeminin.pl/"].forEach((url) => {
+      cmpTest("com_springer", url);
+    });
+  });
+
+  xdescribe("unsupported", () => {
+    [
+      "https://www.lepoint.fr/",
+    ].forEach((url) => {
+      cmpTest("", url);
     });
   });
 });
