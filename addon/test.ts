@@ -139,13 +139,13 @@ describe("CMP Tests", () => {
       "https://www.channelpro.co.uk/news",
       "https://www.csoonline.com/blogs",
     ].forEach((url) => {
-      cmpTest("Sourcepoint", url);
+      cmpTest("Sourcepoint", url, { selfTest: false });
     });
   });
 
   describe("Cevent", () => {
     ["https://www.cvent.com/"].forEach((url) => {
-      cmpTest("Cevent", url);
+      cmpTest("Cevent", url, { selfTest: false });
     });
   });
 

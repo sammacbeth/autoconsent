@@ -23,7 +23,9 @@ export default class TagCommander extends AutoConsentBase {
 
   detectFrame(tab: TabActor, frame: { url: string }) {
     return frame.url.startsWith('http://cdn.tagcommander.com/privacy') ||
-      frame.url.startsWith('https://cdn.tagcommander.com/privacy');
+      frame.url.startsWith('https://cdn.tagcommander.com/privacy') ||
+      frame.url.startsWith('https://cdn.trustcommander.net/privacy') ||
+      frame.url.startsWith('https://analytics.ovh.com/ovh/privacy');
   }
 
   async openFrame(tab: TabActor) {
@@ -44,8 +46,10 @@ export default class TagCommander extends AutoConsentBase {
     }
     await tab.wait(500);
     await tab.waitForElement('#privacy-cat-modal', 20000, tab.frame.id);
-    await tab.wait(500);
-    await tab.clickElements('.btn-yes', tab.frame.id);
+    if (await tab.elementExists('.refuse-all', tab.frame.id)) {
+      return tab.clickElement('.refuse-all', tab.frame.id)
+    }
+    await tab.clickElements('.btn-yes.btn-primary', tab.frame.id);
     await tab.wait(200);
     await tab.clickElement('.modal-footer > button', tab.frame.id);
     return true;
@@ -61,7 +65,7 @@ export default class TagCommander extends AutoConsentBase {
     }
     await new Promise(resolve => setTimeout(resolve, 500));
     await tab.waitForElement('#privacy-cat-modal', 20000, tab.frame.id);
-    await tab.clickElements('.btn-no', tab.frame.id);
+    await tab.clickElements('.btn-no.btn-primary', tab.frame.id);
     await tab.clickElement('.modal-footer > button', tab.frame.id);
     return true;
   }
