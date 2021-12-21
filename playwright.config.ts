@@ -1,5 +1,7 @@
 import { PlaywrightTestConfig, devices } from '@playwright/test';
 
+const proxy = process.env.PROXY_SERVER ? { server: process.env.PROXY_SERVER } : null
+
 const config: PlaywrightTestConfig = {
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
@@ -10,7 +12,10 @@ const config: PlaywrightTestConfig = {
   projects: [
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      use: {
+        ...devices['Desktop Safari'],
+        proxy,
+      },
     },
   ],
 };
