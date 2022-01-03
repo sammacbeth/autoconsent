@@ -1,6 +1,6 @@
 import { PlaywrightTestConfig, devices } from '@playwright/test';
 
-const proxy = process.env.PROXY_SERVER ? { server: process.env.PROXY_SERVER } : null
+const proxy = process.env.PROXY_SERVER ? { server: process.env.PROXY_SERVER } : undefined
 
 const config: PlaywrightTestConfig = {
   forbidOnly: !!process.env.CI,
