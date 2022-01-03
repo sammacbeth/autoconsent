@@ -15,7 +15,7 @@ export function attachToPage(page: any, url: string, rules: AutoCMP[], retries =
   const frames: any[] = [];
   const tab = new Tab(page, url, frames);
   frames.push(page.mainFrame());
-  page.on('framenavigated', (frame: any) => {
+  function onFrame(frame: any) {
     const frameId = frames.length;
     const frameMatch = rules.findIndex(r => r.detectFrame(tab, {
       url: frame.url(),
@@ -28,6 +28,8 @@ export function attachToPage(page: any, url: string, rules: AutoCMP[], retries =
       };
       frames.push(frame);
     }
-  });
+  }
+  page.on('framenavigated', onFrame);
+  page.frames().forEach(onFrame);
   return new TabConsent(tab, detectDialog(tab, retries, rules))
 }

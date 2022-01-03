@@ -17,6 +17,13 @@ const config: PlaywrightTestConfig = {
         proxy,
       },
     },
+    {
+      name: 'firefox',
+      use: {
+        ...devices['Desktop Firefox'],
+        proxy,
+      },
+    }
   ],
 };
 export default config;
